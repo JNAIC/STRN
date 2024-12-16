@@ -2,7 +2,7 @@
 This repo is the official implementation for [Structural Topology Refinement Network for Skeleton-Based Action Recognition]().
 
 ## Architecture of STRN
-![image](src/Main Architecture.png)
+![image](src/framework.png)
 # Prerequisites
 
 - Python >= 3.6
