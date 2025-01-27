@@ -358,10 +358,10 @@ class SPDModel(nn.Module):
         self.spd_A = Variable(torch.from_numpy(graph.spd_A.astype(np.float32)), requires_grad=True)
         if self.spd_A.shape[1] == 25:
             self.module = nn.Sequential(
-                SPDCov2d(1, 6, kernel_size=5, stride=2),
-                SPDCov2d(6, 6, kernel_size=5, stride=2),
+                SPDCov2d(1, 6, kernel_size=3, stride=2),
+                SPDCov2d(6, 6, kernel_size=3, stride=2),
                 ReEig(),
-                SPDCov2d(6, 6, kernel_size=5, stride=2),
+                SPDCov2d(6, 6, kernel_size=3, stride=2),
                 SPDCov2d(6, 6, kernel_size=5, stride=3),
                 ReEig(),
                 LogEig()
@@ -388,7 +388,6 @@ class SPDModel(nn.Module):
         x = self.module(x)
 
         return x
-
 
 class GCN_TCN(nn.Module):
     def __init__(self, num_class=60, num_point=25, num_person=2, graph=None, in_channels=3,
